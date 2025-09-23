@@ -46,7 +46,7 @@ exports.update = async (req, res, next) => {
         });
         res.status(201).json(user);
     }catch(e){
-        res.status(400).json({error: "Ce compte existe déjà!"})
+        res.status(400).json({error: "Impossible de modifier ce compte"})
     }
 }
 
@@ -59,7 +59,7 @@ exports.delete = async (req,res) => {
         });
         res.status(200).json(user);
     }catch(e){
-        res.status(400).json({error: "Impossible de récupérer les utilsateurs"})
+        res.status(400).json({error: "Impossible de supprimer ce compte"})
     }
 }
 
