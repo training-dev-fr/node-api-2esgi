@@ -17,6 +17,7 @@ exports.getById = async (req, res) => {
                 id: req.params.id
             }
         });
+        produit.picture = "http://localhost:3000/images/" + produit.picture;
         res.status(200).json(produit);
     } catch (e) {
         res.status(400).json({ error: "Impossible de récupérer les produits" })
