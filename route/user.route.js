@@ -7,6 +7,7 @@ router.get('/',userController.getAll);
 router.get('/:id',userController.getById);
 
 router.post('/',userController.signin);
+router.post('/Login',userController.login);
 
 router.put('/:id',userController.update);
 

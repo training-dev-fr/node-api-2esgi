@@ -10,6 +10,9 @@ const Product = db.define('Product',{
     },
     price:{
         type: DataTypes.DECIMAL(10,2)
+    },
+    picture: {
+        type: DataTypes.STRING
     }
 },{
     tableName: "product"

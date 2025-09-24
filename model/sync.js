@@ -1,8 +1,8 @@
 const bdd = require('./index');
-require('./user.model');
-require('./product.model');
+const relate = require('./relation');
 
 const sync = async () => {
+    await relate();
     await bdd.sync({alter: true});
     console.log("Synchronisation réussie");
 }

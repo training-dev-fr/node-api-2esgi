@@ -25,10 +25,15 @@ exports.getById = async (req, res) => {
 
 exports.create = async (req, res, next) => {
     try {
+        let body = JSON.parse(req.body.product);
+        if(req.file){
+            body.picture = req.file.filename
+        }
         let product = await Product.create({
-            name: req.body.name,
-            description: req.body.description,
-            price: req.body.price
+            name: body.name,
+            description: body.description,
+            price: body.price,
+            picture: body.picture
         });
         res.status(201).json(product);
     } catch (e) {
@@ -43,6 +48,9 @@ exports.update = async (req, res, next) => {
                 id: req.params.id
             }
         });
+        if(req.token.id !== product.userId){
+            return res.status(403).json('Vous n\'avez pas les droits pour modifier ce produit');
+        }
         if(req.body.name){
             product.name = req.body.name;
         }
